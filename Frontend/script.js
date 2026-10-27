@@ -3,7 +3,7 @@
 // =========================
 
 // address where Flask API is running
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = "https://dbms-food-price-project.vercel.app";
 
 // Format the API date 
 function formatDate(dateString) {
