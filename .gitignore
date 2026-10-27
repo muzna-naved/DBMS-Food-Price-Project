@@ -14,3 +14,7 @@ __pycache__/
 # Editor and operating system files
 .vscode/
 .DS_Store
+
+# Database backups and SSL certificates
+Database/ca.pem
+Database/food_price_backup.sql

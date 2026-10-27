@@ -13,15 +13,17 @@ CORS(app)
 
 
 # function connects Flask app with the MySQL database
+
 def get_db_connection():
     db = mysql.connector.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        user=os.getenv("DB_USER", "root"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME", "food_price_db")
+        host=os.environ["DB_HOST"],
+        port=int(os.environ.get("DB_PORT", "3306")),
+        user=os.environ["DB_USER"],
+        password=os.environ["DB_PASSWORD"],
+        database=os.environ["DB_NAME"],
+        ssl_disabled=False
     )
     return db
-
 
 # home page of API
 # check whether the Flask API is running or not
