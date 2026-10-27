@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Food Price Monitor
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+         ========================= -->
+
+    <aside class="sidebar">
+
+        <!-- Website logo -->
+        <div class="logo">
+
+            <div class="logo-icon"> <i data-lucide="shopping-basket"></i>
+            </div>
+
+            <div>
+                <h2>Smart Food Price</h2>
+                <p>Monitoring System</p>
+            </div>
+
+        </div>
+
+
+        <!-- Navigation menu -->
+        <nav class="navigation">
+
+            <a href="#" class="nav-item active" data-section="dashboard" onclick="setActiveNav(this)">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="priceAnalytics" onclick="setActiveNav(this); goToPriceAnalytics(event)">
+                <i data-lucide="bar-chart-3"></i>
+                <span>Price Analytics</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="cityComparison" onclick="setActiveNav(this)">
+                <i data-lucide="map-pin"></i>
+                <span>City Comparison</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="productSearch" onclick="setActiveNav(this)">
+                <i data-lucide="search"></i>
+                <span>Product Search</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="about" onclick="setActiveNav(this)">
+                <i data-lucide="info"></i>
+                <span>About</span>
+            </a>
+
+        </nav>
+
+
+        <!-- message at bottom of sidebar -->
+        <div class="sidebar-message">
+
+            <div class="basket-icon"> <i data-lucide="shopping-cart"></i>
+            </div>
+
+            <p>
+                Better Food Prices<br> for a Healthier Tomorrow
+            </p>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+         ========================= -->
+
+    <main class="main-content">
+
+
+        <!-- Header -->
+        <header class="top-header">
+
+            <div>
+
+                <h1>Smart Food Price Monitoring System</h1>
+
+                <p>
+                    Monitor essential food prices across Pakistan
+                </p>
+
+            </div>
+
+
+            <div class="header-info">
+                <span>
+                    <i data-lucide="calendar-days"></i>
+                    <span id="currentDate"></span>
+                </span>
+
+                <span>
+                   <i data-lucide="user-round"></i>
+                     Welcome!
+                </span>
+
+            </div>
+
+        </header>
+
+        <!-- =========================
+     DASHBOARD
+     ========================= -->
+
+        <section id="dashboard">
+            <!-- =========================
+             FILTER SECTION
+             ========================= -->
+
+            <section class="filter-section">
+
+                <div class="filter-box">
+
+                    <label for="citySelect">
+                    Select City
+                </label>
+
+                    <select id="citySelect">
+
+                    <option value="">
+                        Select a city
+                    </option>
+
+                </select>
+
+                </div>
+
+
+                <div class="filter-box">
+
+                    <label for="productSelect">
+                    Select Product
+                </label>
+
+                    <select id="productSelect">
+
+                    <option value="">
+                        Select a product
+                    </option>
+
+                </select>
+
+                </div>
+
+
+                <button id="loadPricesBtn">
+                    <i data-lucide="refresh-cw"></i>
+                    <span>Get Latest Prices</span>
+                </button>
+
+            </section>
+
+
+
+            <!-- =========================
+             PRICE CARDS
+             ========================= -->
+
+            <section class="price-cards">
+
+
+                <!-- Minimum price -->
+                <div class="price-card minimum">
+
+                    <div class="card-icon">
+                        <i data-lucide="arrow-down"></i>
+                    </div>
+
+                    <div>
+
+                        <p>Minimum Price</p>
+
+                        <h2 id="minPrice">
+                            Rs. -
+                        </h2>
+
+                        <small id="minInfo">
+                        Select a city and product
+                    </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Average price -->
+                <div class="price-card average">
+
+                    <div class="card-icon">
+                        <i data-lucide="chart-column"></i>
+                    </div>
+
+                    <div>
+
+                        <p>Average Price</p>
+
+                        <h2 id="avgPrice">
+                            Rs. -
+                        </h2>
+
+                        <small id="avgInfo">
+                        Select a city and product
+                    </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Maximum price -->
+                <div class="price-card maximum">
+
+                    <div class="card-icon">
+                        <i data-lucide="arrow-up"></i>
+                    </div>
+
+                    <div>
+
+                        <p>Maximum Price</p>
+
+                        <h2 id="maxPrice">
+                            Rs. -
+                        </h2>
+
+                        <small id="maxInfo">
+                        Select a city and product
+                    </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Product information -->
+                <div class="price-card product-info">
+
+                    <h3>
+                        <i data-lucide="package"></i>
+                        <span>Product Info</span>
+                    </h3>
+
+                    <div class="info-row">
+
+                        <span>Product</span>
+
+                        <strong id="infoProduct">
+                        -
+                    </strong>
+
+                    </div>
+
+                    <div class="info-row">
+
+                        <span>Unit</span>
+
+                        <strong id="infoUnit">
+                        -
+                    </strong>
+
+                    </div>
+
+                    <div class="info-row">
+
+                        <span>City</span>
+
+                        <strong id="infoCity">
+                        -
+                    </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+             PRICE DETAILS TABLE
+             ========================= -->
+
+            <section class="table-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2><i data-lucide="clipboard-list"></i> Price Details</h2>
+
+                        <p>
+                            Food prices from PBS data
+                        </p>
+
+                    </div>
+
+                    <input type="text" id="searchInput" placeholder="Search product or city...">
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Product Name</th>
+
+                                <th>Unit</th>
+
+                                <th>City</th>
+
+                                <th>Province</th>
+
+                                <th>Date</th>
+
+                                <th>Min Price (Rs.)</th>
+
+                                <th>Avg Price (Rs.)</th>
+
+                                <th>Max Price (Rs.)</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="priceTableBody">
+
+                            <tr>
+                                <td colspan="8">
+                                    Loading price data...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+        </section>
+        <!-- =========================
+     PRICE COMPARISON CHART
+     ========================= -->
+
+        <section class="chart-section" id="priceAnalytics">
+            <div class="section-header">
+
+                <div>
+
+                    <h2> <i data-lucide="chart-column"></i> Price Comparison Across Cities</h2>
+
+                    <p>
+                        Average price of the selected product across different cities
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="priceChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+     CITY COMPARISON
+     ========================= -->
+
+        <section class="comparison-section" id="cityComparison">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2><i data-lucide="map-pin"></i> City Comparison</h2>
+
+                    <p>
+                        Compare food prices across different cities of Pakistan
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product selection -->
+
+            <div class="comparison-controls">
+
+                <div class="comparison-select">
+
+                    <label for="comparisonProduct">
+                Select Product
+            </label>
+
+                    <select id="comparisonProduct">
+
+                <option value="">
+                    Select a product
+                </option>
+
+            </select>
+
+                </div>
+
+
+                <button id="compareProductBtn">
+    <i data-lucide="git-compare"></i>
+    <span>Compare Prices</span>
+</button>
+
+            </div>
+
+
+            <!-- Comparison summary -->
+
+            <div class="comparison-summary">
+
+                <div class="comparison-card">
+
+                    <span>Lowest Average Price</span>
+
+                    <strong id="lowestCity">
+                -
+            </strong>
+
+                    <p id="lowestPrice">
+                        Rs. -
+                    </p>
+
+                </div>
+
+
+                <div class="comparison-card">
+
+                    <span>Highest Average Price</span>
+
+                    <strong id="highestCity">
+                -
+            </strong>
+
+                    <p id="highestPrice">
+                        Rs. -
+                    </p>
+
+                </div>
+
+
+                <div class="comparison-card">
+
+                    <span>Price Difference</span>
+
+                    <strong id="priceDifference">
+                Rs. -
+            </strong>
+
+                    <p>
+                        Highest − Lowest
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Comparison table -->
+
+            <div class="comparison-table-container">
+
+                <table class="comparison-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>City</th>
+
+                            <th>Province</th>
+
+                            <th>Date</th>
+
+                            <th>Minimum Price</th>
+
+                            <th>Average Price</th>
+
+                            <th>Maximum Price</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="comparisonTableBody">
+
+                        <tr>
+                            <td colspan="6">
+                                Select a product to compare prices.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+     PRODUCT SEARCH
+     ========================= -->
+
+        <section class="search-section" id="productSearch">
+
+            <div class="section-header">
+
+                <div>
+                    <h2 class="product-search-title">
+                        <i data-lucide="search"></i>
+                        <span>Product Search</span>
+                    </h2>
+
+                    <p>
+                        Search for food products and view their prices across cities
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Search box -->
+
+            <div class="search-controls">
+
+                <div class="search-input-wrapper">
+
+                    <label for="productSearchInput">
+                Search Product
+            </label>
+
+                    <input type="text" id="productSearchInput" placeholder="e.g. Wheat, Rice, Chicken...">
+
+                </div>
+
+                <button id="searchProductBtn">
+    <i data-lucide="search"></i>
+    <span>Search Product</span>
+</button>
+
+            </div>
+
+
+            <!-- Search result information -->
+
+            <div class="search-result-info" id="searchResultInfo">
+                Enter a product name to search.
+            </div>
+
+
+            <!-- Search results table -->
+
+            <div class="search-table-container">
+
+                <table class="search-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Unit</th>
+                            <th>City</th>
+                            <th>Province</th>
+                            <th>Date</th>
+                            <th>Minimum Price</th>
+                            <th>Average Price</th>
+                            <th>Maximum Price</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="searchResultsBody">
+
+                        <tr>
+                            <td colspan="8">
+                                Search for a product to see results.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about-section">
+
+            <div class="section-header">
+                <h2>
+                    <i data-lucide="info"></i>
+                    <span>About Project</span>
+                </h2>
+
+                <p>
+                    Information about the Smart Food Price Monitoring System
+                </p>
+            </div>
+
+
+            <div class="about-container">
+
+                <!-- Project Name -->
+                <div class="about-card">
+
+                    <h3>
+                        <i data-lucide="badge"></i>
+                        <span>Project Name</span>
+                    </h3>
+
+                    <p>
+                        Smart Food Price Monitoring System
+                    </p>
+
+                </div>
+
+
+                <!-- Objective -->
+                <div class="about-card">
+
+                    <h3>
+                        <i data-lucide="target"></i>
+                        <span>Objective</span>
+                    </h3>
+
+                    <p>
+                        Monitor essential food prices across Pakistan.
+                    </p>
+
+                </div>
+
+
+                <!-- Data Source -->
+                <div class="about-card">
+
+                    <h3>
+                        <i data-lucide="database"></i>
+                        <span>Data Source</span>
+                    </h3>
+
+                    <p>
+                        Pakistan Bureau of Statistics (PBS)
+                    </p>
+
+                </div>
+
+
+                <!-- Products -->
+                <div class="about-card">
+
+                    <h3>
+                        <i data-lucide="shopping-basket"></i>
+                        <span>Products</span>
+                    </h3>
+
+                    <p>
+                        32 Food Products
+                    </p>
+
+                </div>
+
+
+                <!-- Cities -->
+                <div class="about-card">
+
+                    <h3>
+                        <i data-lucide="map-pin"></i>
+                        <span>Cities</span>
+                    </h3>
+
+                    <p>
+                        17 Cities
+                    </p>
+
+                </div>
+
+
+                <!-- Database Records -->
+                <div class="about-card">
+
+                    <h3>
+                        <i data-lucide="table-2"></i>
+                        <span>Database Records</span>
+                    </h3>
+
+                    <p>
+                        544 Price Records
+                    </p>
+
+                </div>
+
+
+                <!-- Technologies -->
+                <div class="about-card">
+
+                    <h3>
+                        <i data-lucide="code-2"></i>
+                        <span>Technologies</span>
+                    </h3>
+
+                    <p>
+                        HTML, CSS, JavaScript, Flask, MySQL, Chart.js
+                    </p>
+
+                </div>
+
+
+                <!-- System Working -->
+                <div class="about-card">
+
+                    <h3>
+                        <i data-lucide="workflow"></i>
+                        <span>System Working</span>
+                    </h3>
+
+                    <p>
+                        PBS Data → MySQL Database → Flask API → Dashboard
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

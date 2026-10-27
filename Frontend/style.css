@@ -1,0 +1,1266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7f6;
+    color: #26332d;
+    display: flex;
+}
+
+
+/* =========================
+   SIDEBAR
+   ========================= */
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: #183d2b;
+    color: white;
+    padding: 25px 18px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+
+/* Website logo */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 10px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.logo-icon {
+    width: 45px;
+    height: 45px;
+    background-color: #d9ead3;
+    color: #183d2b;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Lucide logo icon */
+
+.logo-icon i[data-lucide] {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+}
+
+.logo h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.logo p {
+    font-size: 11px;
+    color: #b9cfc1;
+}
+
+
+/* Navigation */
+
+.navigation {
+    margin-top: 30px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px 15px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    color: #dce9e1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+    background-color: #dcefd8;
+    color: #183d2b;
+    font-weight: 600;
+}
+
+
+/* Sidebar message */
+
+.sidebar-message {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+}
+
+.basket-icon {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.basket-icon i[data-lucide] {
+    width: 25px;
+    height: 25px;
+    stroke-width: 2;
+}
+
+.sidebar-message p {
+    color: #c8d9cf;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   MAIN CONTENT
+   ========================= */
+
+.main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 30px 40px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.top-header h1 {
+    font-size: 27px;
+    color: #183d2b;
+    margin-bottom: 7px;
+}
+
+.top-header p {
+    color: #718078;
+    font-size: 14px;
+}
+
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.header-info span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.header-info i {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* =========================
+   FILTER SECTION
+   ========================= */
+
+.filter-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 22px;
+    display: flex;
+    align-items: end;
+    gap: 20px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+}
+
+.filter-box {
+    flex: 1;
+}
+
+.filter-box label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    color: #53635a;
+    margin-bottom: 8px;
+}
+
+.filter-box select {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid #dce4df;
+    border-radius: 8px;
+    background-color: #fafcfb;
+    color: #26332d;
+    font-size: 14px;
+    outline: none;
+}
+
+.filter-box select:focus {
+    border-color: #4d8b68;
+}
+
+
+/* Main button */
+
+#loadPricesBtn {
+    border: none;
+    background-color: #2f704d;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+#loadPricesBtn:hover {
+    background-color: #245b3d;
+}
+
+#loadPricesBtn i[data-lucide] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   PRICE CARDS
+   ========================= */
+
+.price-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.price-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    min-height: 135px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.price-card:not(.product-info) {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.card-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background-color: #edf5ef;
+    color: #2f704d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.price-card p {
+    color: #7a8780;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+.price-card h2 {
+    color: #183d2b;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.price-card small {
+    color: #9aa49e;
+    font-size: 10px;
+}
+
+
+/* Product information card */
+
+.product-info h3 {
+    color: #183d2b;
+    font-size: 15px;
+    margin-bottom: 13px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 11px;
+}
+
+.info-row span {
+    color: #89958e;
+}
+
+.info-row strong {
+    color: #34473c;
+    text-align: right;
+}
+
+
+/* =========================
+   TABLE SECTION
+   ========================= */
+
+.table-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #183d2b;
+    font-size: 19px;
+    margin: 0 0 5px 0;
+}
+
+.section-header h2 i[data-lucide] {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+    flex-shrink: 0;
+}
+
+.section-header p {
+    color: #89958e;
+    font-size: 12px;
+}
+
+#searchInput {
+    width: 250px;
+    padding: 11px 14px;
+    border: 1px solid #dce4df;
+    border-radius: 8px;
+    outline: none;
+    font-size: 12px;
+}
+
+#searchInput:focus {
+    border-color: #4d8b68;
+}
+
+
+/* =========================
+   TABLE
+   ========================= */
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 850px;
+}
+
+thead {
+    background-color: #f0f5f2;
+}
+
+th {
+    color: #53635a;
+    font-size: 11px;
+    text-align: left;
+    padding: 13px;
+    white-space: nowrap;
+}
+
+td {
+    padding: 13px;
+    border-bottom: 1px solid #edf0ee;
+    color: #5e6c64;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    background-color: #f8faf9;
+}
+
+
+/* =========================
+   RESPONSIVE 
+   ========================= */
+
+@media (max-width: 1100px) {
+    .price-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .header-info {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .sidebar {
+        width: 70px;
+        padding: 20px 10px;
+    }
+    .logo div:not(.logo-icon),
+    .nav-item span,
+    .sidebar-message {
+        display: none;
+    }
+    .logo {
+        border-bottom: none;
+        justify-content: center;
+        padding: 5px 0 25px;
+    }
+    .nav-item {
+        justify-content: center;
+        padding: 13px;
+    }
+    .main-content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+        padding: 25px;
+    }
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .price-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        padding: 18px;
+    }
+    .top-header h1 {
+        font-size: 21px;
+    }
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    #searchInput {
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .about-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================
+   PRICE COMPARISON CHART
+   ========================= */
+
+.chart-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 25px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.chart-section h2 {
+    color: #183d2b;
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+.chart-section p {
+    color: #89958e;
+    font-size: 12px;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    margin-top: 20px;
+    padding: 5px 10px 0 0;
+}
+
+.chart-section {
+    transition: 0.2s ease;
+}
+
+.chart-section:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#priceAnalytics {
+    scroll-margin-top: 20px;
+}
+
+
+/* =========================
+   CITY COMPARISON
+   ========================= */
+
+.comparison-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 25px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    scroll-margin-top: 20px;
+}
+
+
+/* Product selection */
+
+.comparison-controls {
+    display: flex;
+    align-items: end;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f7faf8;
+    border-radius: 12px;
+}
+
+.comparison-select {
+    flex: 1;
+}
+
+.comparison-select label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #53635a;
+}
+
+.comparison-select select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d7e2dc;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 14px;
+    color: #183d2b;
+}
+
+#compareProductBtn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2f704d;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#compareProductBtn:hover {
+    background-color: #245c3d;
+}
+
+
+/* Summary cards */
+
+.comparison-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.comparison-card {
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f7faf8;
+    border: 1px solid #e2ebe6;
+}
+
+.comparison-card span {
+    display: block;
+    font-size: 12px;
+    color: #718078;
+    margin-bottom: 8px;
+}
+
+.comparison-card strong {
+    display: block;
+    font-size: 18px;
+    color: #183d2b;
+}
+
+.comparison-card p {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #2f704d;
+    font-weight: 600;
+}
+
+
+/* Comparison table */
+
+.comparison-table-container {
+    margin-top: 25px;
+    overflow-x: auto;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th {
+    background-color: #eef5f0;
+    color: #183d2b;
+    padding: 13px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.comparison-table td {
+    padding: 13px;
+    border-bottom: 1px solid #e8eee9;
+    color: #53635a;
+    font-size: 13px;
+}
+
+.comparison-table tbody tr:hover {
+    background-color: #f7faf8;
+}
+
+
+/* =========================
+   PRODUCT SEARCH
+   ========================= */
+
+.search-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 25px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    scroll-margin-top: 20px;
+}
+
+
+/* Search controls */
+
+.search-controls {
+    display: flex;
+    align-items: end;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f7faf8;
+    border-radius: 12px;
+}
+
+.search-input-wrapper {
+    flex: 1;
+}
+
+.search-input-wrapper label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #53635a;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #d7e2dc;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 14px;
+    color: #183d2b;
+    outline: none;
+}
+
+.search-input-wrapper input:focus {
+    border-color: #2f704d;
+    box-shadow: 0 0 0 3px rgba(47, 112, 77, 0.10);
+}
+
+#searchProductBtn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2f704d;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+#searchProductBtn:hover {
+    background-color: #245c3d;
+}
+
+#searchProductBtn i[data-lucide] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+
+/* Search result information */
+
+.search-result-info {
+    margin-top: 20px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background-color: #eef5f0;
+    color: #53635a;
+    font-size: 13px;
+}
+
+
+/* Search results table */
+
+.search-table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.search-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.search-table th {
+    background-color: #eef5f0;
+    color: #183d2b;
+    padding: 13px;
+    text-align: left;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.search-table td {
+    padding: 13px;
+    border-bottom: 1px solid #e8eee9;
+    color: #53635a;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.search-table tbody tr:hover {
+    background-color: #f7faf8;
+}
+
+
+/* ABOUT SECTION */
+
+.about-section {
+    margin-top: 40px;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.about-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+}
+
+.about-card h3 {
+    color: #1b5e20;
+    margin-bottom: 15px;
+}
+
+.about-card p {
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* General Lucide icons */
+
+i[data-lucide] {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+    vertical-align: middle;
+}
+
+
+/* Navigation icons */
+
+.nav-item i[data-lucide] {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* Price card icons */
+
+.card-icon i[data-lucide] {
+    width: 22px;
+    height: 22px;
+}
+
+
+/* Product Info heading */
+
+.product-info h3 {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.product-info h3 i[data-lucide] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.section-title i[data-lucide] {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+}
+
+.city-comparison-title i[data-lucide] {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+}
+
+#compareProductBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+#compareProductBtn i[data-lucide] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.product-search-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.product-search-title i[data-lucide] {
+    width: 21px;
+    height: 21px;
+    stroke-width: 2;
+    flex-shrink: 0;
+}
+
+.product-search h2 {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.product-search h2 i[data-lucide] {
+    width: 21px;
+    height: 21px;
+}
+
+
+/* =========================
+   ABOUT SECTION
+   ========================= */
+
+.about-section {
+    margin-top: 40px;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+/* About cards */
+
+.about-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+    min-height: 145px;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+}
+
+
+/* About card heading */
+
+.about-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #183d2b;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+}
+
+
+/* About card icons */
+
+.about-card h3 i[data-lucide] {
+    width: 22px;
+    height: 22px;
+    color: #183d2b;
+    stroke-width: 2;
+    flex-shrink: 0;
+}
+
+
+/* About card description */
+
+.about-card p {
+    margin: 0;
+    color: #53635a;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* About section heading */
+
+.about-section .section-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.about-section .section-header h2 i[data-lucide] {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+    flex-shrink: 0;
+}
+
+.table-container,
+.comparison-table-container,
+.search-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+input,
+select,
+button,
+textarea {
+    font-size: 16px;
+}
+
+
+/* ---- Tablets  ---- */
+
+@media (max-width: 1024px) {
+    .main-content {
+        padding: 25px 28px;
+    }
+    .price-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .comparison-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .chart-container {
+        height: 360px;
+    }
+}
+
+
+/* ---- Small tablets  ---- */
+
+@media (max-width: 800px) {
+    .sidebar {
+        width: 70px;
+        padding: 20px 10px;
+    }
+    .logo div:not(.logo-icon),
+    .nav-item span,
+    .sidebar-message {
+        display: none;
+    }
+    .logo {
+        border-bottom: none;
+        justify-content: center;
+        padding: 5px 0 25px;
+    }
+    .nav-item {
+        justify-content: center;
+        padding: 14px 0;
+        min-height: 48px;
+    }
+    .nav-item i[data-lucide] {
+        width: 22px;
+        height: 22px;
+    }
+    .main-content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+        padding: 22px 20px;
+    }
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .top-header h1 {
+        font-size: 22px;
+    }
+    .header-info {
+        display: none;
+    }
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        padding: 18px;
+    }
+    #loadPricesBtn {
+        width: 100%;
+        padding: 14px;
+        min-height: 44px;
+    }
+    .price-cards {
+        grid-template-columns: 1fr;
+    }
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    #searchInput {
+        width: 100%;
+    }
+    .comparison-controls,
+    .search-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 16px;
+    }
+    #compareProductBtn,
+    #searchProductBtn {
+        width: 100%;
+        padding: 14px;
+        min-height: 44px;
+    }
+    .comparison-summary {
+        grid-template-columns: 1fr;
+    }
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+    .chart-container {
+        height: 320px;
+    }
+    table {
+        min-width: 700px;
+    }
+}
+
+
+/* ---- Phones ---- */
+
+@media (max-width: 600px) {
+    .main-content {
+        padding: 16px 14px;
+    }
+    .top-header h1 {
+        font-size: 18px;
+    }
+    .top-header p {
+        font-size: 12px;
+    }
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .filter-box select {
+        padding: 11px;
+        font-size: 13px;
+    }
+    .price-card {
+        padding: 16px;
+        min-height: 115px;
+    }
+    .price-card h2 {
+        font-size: 20px;
+    }
+    .table-section,
+    .chart-section,
+    .comparison-section,
+    .search-section {
+        padding: 18px;
+        border-radius: 12px;
+    }
+    .section-header h2 {
+        font-size: 16px;
+    }
+    .section-header h2 i[data-lucide] {
+        width: 18px;
+        height: 18px;
+    }
+    table {
+        min-width: 620px;
+    }
+    th,
+    td {
+        padding: 10px 8px;
+        font-size: 11px;
+    }
+    .chart-container {
+        height: 260px;
+    }
+    .comparison-card {
+        padding: 16px;
+    }
+    .comparison-card strong {
+        font-size: 16px;
+    }
+    .about-card {
+        padding: 20px;
+        min-height: auto;
+    }
+    .about-card h3 {
+        font-size: 15px;
+    }
+    .about-card p {
+        font-size: 13px;
+    }
+}
+
+
+/* ---- Very small phones ---- */
+
+@media (max-width: 400px) {
+    .sidebar {
+        width: 60px;
+        padding: 16px 8px;
+    }
+    .main-content {
+        margin-left: 60px;
+        width: calc(100% - 60px);
+        padding: 14px 10px;
+    }
+    .top-header h1 {
+        font-size: 16px;
+    }
+    .price-card h2 {
+        font-size: 18px;
+    }
+    table {
+        min-width: 560px;
+    }
+    .chart-container {
+        height: 220px;
+    }
+}
+
+.table-container::-webkit-scrollbar,
+.comparison-table-container::-webkit-scrollbar,
+.search-table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb,
+.comparison-table-container::-webkit-scrollbar-thumb,
+.search-table-container::-webkit-scrollbar-thumb {
+    background: #b9cfc1;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-track,
+.comparison-table-container::-webkit-scrollbar-track,
+.search-table-container::-webkit-scrollbar-track {
+    background: #f0f5f2;
+    border-radius: 4px;
+}

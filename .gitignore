@@ -1,0 +1,16 @@
+
+# Private credentials
+.env
+**/.env
+
+# Python virtual environments
+.venv/
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Editor and operating system files
+.vscode/
+.DS_Store
